@@ -1,0 +1,23 @@
+@import 'partials/_setup.scss';
+@import 'partials/_typography.scss';
+@import 'partials/_utils.scss';
+
+
+// landing styles
+.landing {
+    width: 100%;
+    height: 100vh;
+background: rgb(218,196,146);
+background: -moz-linear-gradient(328deg, rgba(218,196,146,1) 0%, rgba(159,198,199,1) 100%);
+background: -webkit-linear-gradient(328deg, rgba(218,196,146,1) 0%, rgba(159,198,199,1) 100%);
+background: linear-gradient(328deg, rgba(218,196,146,1) 0%, rgba(159,198,199,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dac492",endColorstr="#9fc6c7",GradientType=1);
+    * {
+        color: white;
+    }
+
+    .logo {
+        margin: 0;
+        text-align: center;
+    }
+}
