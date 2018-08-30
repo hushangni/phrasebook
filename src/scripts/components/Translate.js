@@ -52,7 +52,13 @@ class Translate extends Component {
         });
 
         dbRef.on('value', (snapshot) => {
-            this.setPhrases(snapshot.val());
+            if (snapshot.val()) {
+                this.setPhrases(snapshot.val());
+            } else {
+                this.setState({
+                    phrasesList: []
+                })
+            }
         });
     }
 

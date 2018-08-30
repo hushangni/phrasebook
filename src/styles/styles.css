@@ -140,6 +140,9 @@ h1 {
   font-family: "Oswald", sans-serif;
   font-weight: 300; }
 
+h2 {
+  font-family: "Oswald", sans-serif; }
+
 img {
   width: 100%;
   display: block; }
@@ -217,10 +220,27 @@ input {
   display: flex; }
 
 .saved-aside {
-  width: 250px;
+  width: 300px;
   height: 100vh;
   display: inline-block;
-  background-color: white; }
+  background-color: white;
+  text-align: center; }
+  .saved-aside .phrase {
+    width: 220px;
+    margin: 15px auto;
+    background-color: #eee;
+    padding: 15px;
+    font-size: 2rem; }
+    .saved-aside .phrase p {
+      margin: 5px 0; }
+    .saved-aside .phrase .original-phrase {
+      color: #333;
+      font-weight: 600; }
+    .saved-aside .phrase .delete-button {
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 10px 15px;
+      margin: 0; }
 
 .translate-section {
   width: calc(100% - 250px);
@@ -252,7 +272,6 @@ input {
       text-align: right; }
     .translate-section .translate-container h2 {
       font-size: 4rem;
-      font-family: "Oswald", sans-serif;
       font-weight: 300; }
     .translate-section .translate-container .translation-box #originalText,
     .translate-section .translate-container .translation-box #translatedText {

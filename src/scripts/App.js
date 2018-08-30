@@ -5,7 +5,6 @@ import firebase from './firebase';
 // components
 import Landing from './components/Landing';
 import Translate from './components/Translate';
-import SavedAside from './components/SavedAside';
 
 const dbRef = firebase.database();
 
@@ -45,7 +44,6 @@ class App extends Component {
     return (
       <div className="App">
         <Landing />
-
         <Translate />
 
 
