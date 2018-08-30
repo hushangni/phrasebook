@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import SavedAside from './SavedAside';
 import firebase from '../firebase';
+
+import SavedAside from './SavedAside';
+import YourBooks from './YourBooks';
 
 const dbRef = firebase.database().ref('unsaved');
 
@@ -123,14 +125,14 @@ class Translate extends Component {
     }
 
     deletePhrase = (phraseID) => {
-        const phraseDbRef = firebase.database().ref(`/${phraseID}`);
+        const phraseDbRef = firebase.database().ref(`unsaved/${phraseID}`);
         phraseDbRef.remove();
     }
 
     render() {
         return (
             <div className="main-container">
-            <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} unsaved={dbRef}/>
+                <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} unsaved={dbRef}/>
                 <section className="translate-section">
                     <div className="translate-container">
                         <select name="langToTranslate" id="langToTranslate" onChange={this.handleChange}>
@@ -160,6 +162,7 @@ class Translate extends Component {
 
                     </div>
                 </section>
+                <YourBooks />
             </div>
         )
     }

@@ -25,8 +25,7 @@ class SavedAside extends Component {
 
     addBookToDatabase = () => {
         if (this.state.currentBookTitle) {
-            const bookRef = firebase.database().ref(`${this.state.currentBookTitle}`);
-            console.log('current phrases to save', this.state.currentPhrasesToSave);
+            const bookRef = firebase.database().ref(`bookList/${this.state.currentBookTitle}`);
 
             bookRef.push({
                 bookName: this.state.currentBookTitle,

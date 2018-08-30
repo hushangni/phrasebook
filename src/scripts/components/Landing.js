@@ -5,7 +5,7 @@ class Landing extends Component {
 
     handleClick(e) {
         e.preventDefault();
-        console.log("landing handle click fired");
+
         const land = document.querySelector('.landing');
         const translate = document.querySelector('.translate-section');
         land.style.display = 'none';
