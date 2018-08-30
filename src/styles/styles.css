@@ -224,7 +224,25 @@ input {
   height: 100vh;
   display: inline-block;
   background-color: white;
-  text-align: center; }
+  text-align: center;
+  overflow-y: scroll; }
+  .saved-aside #bookTitle {
+    margin: 0 auto;
+    width: 200px;
+    font-size: 2rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    padding: 5px; }
+    .saved-aside #bookTitle::placeholder {
+      opacity: 0.4; }
+  .saved-aside .phrasebook-title {
+    font-size: 3rem;
+    background: #dac492;
+    background: linear-gradient(328deg, #dac492 0%, #9fc6c7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dac492",endColorstr="#9fc6c7",GradientType=1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
   .saved-aside .phrase {
     width: 220px;
     margin: 15px auto;

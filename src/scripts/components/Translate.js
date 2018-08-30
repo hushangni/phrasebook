@@ -3,7 +3,7 @@ import axios from 'axios';
 import SavedAside from './SavedAside';
 import firebase from '../firebase';
 
-const dbRef = firebase.database().ref();
+const dbRef = firebase.database().ref('unsaved');
 
 // urls/keys for Yandex API
 const translateURL = "https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -80,7 +80,7 @@ class Translate extends Component {
     }
 
     handleChange = (e) => {
-        e. preventDefault()
+        e. preventDefault();
 
         this.setState({
             [e.target.id]: e.target.value
@@ -130,7 +130,7 @@ class Translate extends Component {
     render() {
         return (
             <div className="main-container">
-            <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase}/>
+            <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} unsaved={dbRef}/>
                 <section className="translate-section">
                     <div className="translate-container">
                         <select name="langToTranslate" id="langToTranslate" onChange={this.handleChange}>
