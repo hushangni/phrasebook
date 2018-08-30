@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../styles/styles.css';
+import firebase from './firebase';
+
+// components
+import Landing from './components/Landing';
+import Translate from './components/Translate';
+import SavedAside from './components/SavedAside';
+
+const dbRef = firebase.database();
 
 // urls/keys for Yandex API
 const translateURL = "https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -10,38 +17,37 @@ const apiKey = "trnsl.1.1.20180828T150321Z.763350fbc08abff9.2cddae20856c6abb3745
 
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      langs: {},
-      langToTranslate: "",
-      textToTranslate: ""
-    }
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     langs: {},
+  //     langToTranslate: "",
+  //     textToTranslate: ""
+  //   }
+  // }
 
-  componentDidMount() {
-    console.log('component did mount called');
-    axios.get(languagesURL, {
-      params: {
-        key: apiKey,
-        ui: 'en'
-      }
-    }).then((res) => {
-      console.log(res.data.langs);
-      this.setState({
-        langs: res.data.langs
-      });
-    });
-  }
+  // componentDidMount() {
+  //   console.log('component did mount called');
+  //   axios.get(languagesURL, {
+  //     params: {
+  //       key: apiKey,
+  //       ui: 'en'
+  //     }
+  //   }).then((res) => {
+  //     console.log(res.data.langs);
+  //     this.setState({
+  //       langs: res.data.langs
+  //     });
+  //   });
+  // }
 
   render() {
     return (
       <div className="App">
+        <Landing />
 
-        <header className="landing">
-          <h1 className="logo">Phrasebook</h1>
+        <Translate />
 
-        </header>
 
       </div>
     );

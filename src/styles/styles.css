@@ -132,24 +132,151 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 62.5%; }
 
 h1 {
-  font-size: 5rem;
-  font-family: 'Oswald', sans-serif;
+  font-size: 6rem;
+  font-family: "Oswald", sans-serif;
   font-weight: 300; }
+
+img {
+  width: 100%;
+  display: block; }
+
+body {
+  background: #dac492;
+  background: linear-gradient(328deg, #dac492 0%, #9fc6c7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dac492",endColorstr="#9fc6c7",GradientType=1);
+  width: 100%;
+  height: 100vh; }
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden; }
+
+input {
+  border: none; }
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 2.3rem;
+  margin: 15px;
+  padding: 13px 40px;
+  border: 2px solid white;
+  transition: 0.3s; }
+  .button:hover, .button:focus {
+    box-shadow: inset 9em 0 0 0 white;
+    color: #B8C5B0; }
 
 .landing {
   width: 100%;
   height: 100vh;
-  background: #dac492;
-  background: -moz-linear-gradient(328deg, #dac492 0%, #9fc6c7 100%);
-  background: -webkit-linear-gradient(328deg, #dac492 0%, #9fc6c7 100%);
-  background: linear-gradient(328deg, #dac492 0%, #9fc6c7 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dac492",endColorstr="#9fc6c7",GradientType=1); }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
   .landing * {
     color: white; }
-  .landing .logo {
-    margin: 0;
-    text-align: center; }
+  .landing .logo-words {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -15px; }
+    .landing .logo-words .logo {
+      width: 50px;
+      height: 100%;
+      margin-right: 15px;
+      text-align: center; }
+    .landing .logo-words .phrasebook {
+      margin: 0; }
+  .landing .white-break {
+    width: 70%;
+    max-width: 600px;
+    border: none;
+    border-bottom: 1px solid white; }
+  .landing .button {
+    position: relative; }
+    .landing .button:hover, .landing .button:focus {
+      box-shadow: inset 6.7em 0 0 0 white;
+      color: #B8C5B0; }
+
+.main-container {
+  display: flex; }
+
+.saved-aside {
+  width: 250px;
+  height: 100vh;
+  display: inline-block;
+  background-color: white; }
+
+.translate-section {
+  width: calc(100% - 250px);
+  height: 70vh;
+  transition: 0.5s ease-in;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white; }
+  .translate-section .translate-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    position: relative; }
+    .translate-section .translate-container #langToTranslate {
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid white;
+      padding: 10px;
+      font-size: 1.7rem;
+      height: 50px;
+      width: 220px;
+      color: white;
+      position: absolute;
+      top: 50px;
+      left: 210px;
+      appearance: none; }
+    .translate-section .translate-container:nth-child(2) {
+      text-align: right; }
+    .translate-section .translate-container h2 {
+      font-size: 4rem;
+      font-family: "Oswald", sans-serif;
+      font-weight: 300; }
+    .translate-section .translate-container .translation-box #originalText,
+    .translate-section .translate-container .translation-box #translatedText {
+      width: 300px;
+      height: 175px;
+      font-size: 2.5rem;
+      padding: 25px;
+      font-weight: 600;
+      border: none;
+      resize: none;
+      line-height: 3rem;
+      letter-spacing: 0.05rem; }
+      .translate-section .translate-container .translation-box #originalText::placeholder,
+      .translate-section .translate-container .translation-box #translatedText::placeholder {
+        opacity: 0.4; }
+    .translate-section .translate-container .save-button,
+    .translate-section .translate-container .translate-button {
+      display: block;
+      background: transparent;
+      color: white;
+      margin: 30px 0 0; }
+    .translate-section .translate-container .save-button {
+      margin-left: 161px; }
+      .translate-section .translate-container .save-button:hover, .translate-section .translate-container .save-button:focus {
+        color: #B5C5B3; }
+    .translate-section .translate-container .translate-button:hover, .translate-section .translate-container .translate-button:focus {
+      color: #D8C494; }

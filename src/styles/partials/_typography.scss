@@ -1,13 +1,15 @@
 // font-family: 'Oswald', sans-serif;
 // font-family: 'Roboto', sans-serif;
+$primaryFont: 'Oswald', sans-serif;
+$secondaryFont: 'Roboto', sans-serif;
 
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: $secondaryFont;
     font-size: 62.5%;
 }
 
 h1 {
-    font-size: 5rem;
-    font-family: 'Oswald', sans-serif;
+    font-size: 6rem;
+    font-family: $primaryFont;
     font-weight: 300;
 }
