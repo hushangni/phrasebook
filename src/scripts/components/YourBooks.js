@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 
-const dbRef = firebase.database().ref(`/bookList`);
-
 class YourBooks extends Component {
     constructor() {
         super();
         this.state = {
+            userID: '',
             books: []
         }
     }
 
     componentDidMount() {
-        dbRef.on('value', (snapshot) => {
-            if (snapshot.val()) {
-                this.setBooks(snapshot.val());
+        // console.log(this.props);
+        console.log(firebase.auth().currentUser)
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user !== null){
+                const dbRef = firebase.database().ref(`/${user.uid}/bookList`);
+                dbRef.on('value', (snapshot) => {
+                    if (snapshot.val()) {
+                        this.setBooks(snapshot.val());
+                    }
+                });
+            }
+            else {
+                const dbRef = firebase.database().ref(`/guest/bookList`);
+                dbRef.on('value', (snapshot) => {
+                    if (snapshot.val()) {
+                        this.setBooks(snapshot.val());
+                    }
+                });
             }
         });
     }
@@ -36,15 +50,15 @@ class YourBooks extends Component {
         this.setState({
             books: booksArray
         });
+
     }
 
     handleClick = (e) => {
         e.preventDefault();
-        console.log("target", e.target.children);
     }
 
     deleteBook = (bookName) => {
-        const phraseDbRef = firebase.database().ref(`bookList/${bookName}`);
+        const phraseDbRef = firebase.database().ref(`/${this.props.userID}/bookList/${bookName}`);
         phraseDbRef.remove();
     }
 

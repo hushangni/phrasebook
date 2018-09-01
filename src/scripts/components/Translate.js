@@ -5,8 +5,6 @@ import firebase from '../firebase';
 import SavedAside from './SavedAside';
 import YourBooks from './YourBooks';
 
-const dbRef = firebase.database().ref('unsaved');
-
 // urls/keys for Yandex API
 const translateURL = "https://translate.yandex.net/api/v1.5/tr.json/translate";
 const languagesURL = 'https://translate.yandex.net/api/v1.5/tr.json/getLangs';
@@ -15,19 +13,21 @@ const apiKey = "trnsl.1.1.20180828T150321Z.763350fbc08abff9.2cddae20856c6abb3745
 
 
 class Translate extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             langs: {},
             langToTranslate: "",
             originalText: "",
             translatedText: "",
-            phrasesList: []
+            phrasesList: [],
+            userID: props.userID,
+            userExists: false
         }
     }
 
-    componentDidMount() {
-        console.log('component did mount called');
+    componentDidMount = () => {
+        console.log(this.props.userID, "this props user translate")
         axios.get(languagesURL, {
             params: {
                 key: apiKey,
@@ -36,7 +36,8 @@ class Translate extends Component {
         }).then((res) => {
             console.log(res.data.langs);
             this.setState({
-                langs: res.data.langs
+                langs: res.data.langs,
+                userID: this.props.userID
             });
 
             // populate the select for the form
@@ -52,19 +53,56 @@ class Translate extends Component {
             }
 
         });
+        console.log('props',this.props);
 
-        dbRef.on('value', (snapshot) => {
-            if (snapshot.val()) {
-                this.setPhrases(snapshot.val());
-            } else {
+        if(this.props.userID === 'guest') {
+            const dbRef = firebase.database().ref(`guest/unsaved`);
+            console.log(dbRef, "db ref");
+
+            dbRef.on('value', (snapshot) => {
+                let data = snapshot.val();
+                if (data === null) {
+                    data = {};
+                }
                 this.setState({
-                    phrasesList: []
+                    userID: 'guest'
+                }, () => {
+                    this.setPhrases(data);
+                })
+
+            });
+        }
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user !== null) {
+                const dbRef = firebase.database().ref(`${user.uid}/unsaved`);
+                console.log(dbRef, "db ref");
+
+                dbRef.on('value', (snapshot) => {
+                    let data = snapshot.val();
+                    if(data === null) {
+                        data = {};
+                    }
+                    this.setState({
+                        userID: user.uid
+                    },() => {
+                        this.setPhrases(data);
+                    })
+
+                });
+            }
+            else {
+                this.setState({
+                    phrasesList: [],
+                    userID: 'guest'
                 })
             }
         });
     }
 
+
     translateText = () => {
+        console.log(this.state.userID, "translate userID");
         axios.get(translateURL, {
             params: {
                 key: apiKey,
@@ -79,6 +117,9 @@ class Translate extends Component {
 
             document.getElementById('translatedText').value = this.state.translatedText;
         });
+
+
+
     }
 
     handleChange = (e) => {
@@ -101,6 +142,7 @@ class Translate extends Component {
     handleSave = (e) => {
         e.preventDefault();
         this.addPhraseToDatabase();
+        document.getElementById('originalText').value = '';
     }
 
     setPhrases = (phraseObject) => {
@@ -118,6 +160,8 @@ class Translate extends Component {
     }
 
     addPhraseToDatabase = () => {
+        console.log("adding to book");
+        const dbRef = firebase.database().ref(`${this.state.userID}/unsaved`);
         dbRef.push({
             original: this.state.originalText,
             translated: this.state.translatedText
@@ -125,15 +169,26 @@ class Translate extends Component {
     }
 
     deletePhrase = (phraseID) => {
-        const phraseDbRef = firebase.database().ref(`unsaved/${phraseID}`);
+        const phraseDbRef = firebase.database().ref(`${this.state.userID}/unsaved/${phraseID}`);
         phraseDbRef.remove();
+    }
+
+    handleSignOut = (e) => {
+        e.preventDefault();
+        firebase.auth().signOut().then(function() {
+            const land = document.querySelector(".landing");
+            const translate = document.querySelector(".main-container");
+            land.style.display = "flex";
+            translate.style.display = "none";
+        })
     }
 
     render() {
         return (
             <div className="main-container">
-                <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} unsaved={dbRef}/>
+                <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} userID={this.state.userID}/>
                 <section className="translate-section">
+                    <a href="#" className="button signout-button" onClick={this.handleSignOut}>Sign out</a>
                     <div className="translate-container">
                         <select name="langToTranslate" id="langToTranslate" onChange={this.handleChange}>
                             <option value=""> ⬇ language to translate    </option>
@@ -162,7 +217,7 @@ class Translate extends Component {
 
                     </div>
                 </section>
-                <YourBooks />
+                <YourBooks userID={this.state.userID}/>
             </div>
         )
     }

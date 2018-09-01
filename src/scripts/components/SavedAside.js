@@ -3,13 +3,14 @@ import firebase from '../firebase';
 
 
 class SavedAside extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             savedBooks: [],
             currentPhrasesToSave: [],
             currentBookTitle: '',
-            bookRef: ''
+            bookRef: '',
+            userExists: false
         }
     }
 
@@ -25,14 +26,16 @@ class SavedAside extends Component {
 
     addBookToDatabase = () => {
         if (this.state.currentBookTitle) {
-            const bookRef = firebase.database().ref(`bookList/${this.state.currentBookTitle}`);
+            const bookRef = firebase.database().ref(`/${this.props.userID}/bookList/${this.state.currentBookTitle}`);
+
+            // console.log(bookRef);
 
             bookRef.push({
                 bookName: this.state.currentBookTitle,
                 phrases: this.state.currentPhrasesToSave
             });
 
-            firebase.database().ref('unsaved').remove();
+            firebase.database().ref(`${this.props.userID}/unsaved`).remove();
             document.getElementById('bookTitle').value = '';
         }
     }

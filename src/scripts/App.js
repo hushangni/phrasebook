@@ -16,38 +16,11 @@ const apiKey = "trnsl.1.1.20180828T150321Z.763350fbc08abff9.2cddae20856c6abb3745
 
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     langs: {},
-  //     langToTranslate: "",
-  //     textToTranslate: ""
-  //   }
-  // }
 
-  // componentDidMount() {
-  //   console.log('component did mount called');
-  //   axios.get(languagesURL, {
-  //     params: {
-  //       key: apiKey,
-  //       ui: 'en'
-  //     }
-  //   }).then((res) => {
-  //     console.log(res.data.langs);
-  //     this.setState({
-  //       langs: res.data.langs
-  //     });
-  //   });
-  // }
 
   render() {
     return (
-      <div className="App">
         <Landing />
-        <Translate />
-
-
-      </div>
     );
   }
 }
