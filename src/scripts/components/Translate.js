@@ -79,6 +79,7 @@ class Translate extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if(user !== null) {
                 const dbRef = firebase.database().ref(`${user.uid}/unsaved`);
+                document.querySelector('.signout-button').text = "sign out";
                 console.log(dbRef, "db ref");
 
                 dbRef.on('value', (snapshot) => {
@@ -95,6 +96,7 @@ class Translate extends Component {
                 });
             }
             else {
+                document.querySelector('.signout-button').text = "back";
                 this.setState({
                     phrasesList: [],
                     userID: 'guest'
