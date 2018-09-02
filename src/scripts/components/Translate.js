@@ -110,7 +110,8 @@ class Translate extends Component {
                 const land = document.querySelector(".landing");
                 const translate = document.querySelector(".main-container");
                 land.style.display = "flex";
-                translate.style.display = "none";
+                translate.style.visibility = "hidden";
+                translate.style.opacity = 0;
             })
 
             document.querySelector(".your-book-list").innerHTML = "";
@@ -200,7 +201,8 @@ class Translate extends Component {
             const land = document.querySelector(".landing");
             const translate = document.querySelector(".main-container");
             land.style.display = "flex";
-            translate.style.display = "none";
+            translate.style.visibility = "hidden";
+            translate.style.opacity = 0;
         })
         window.location.reload();
         document.querySelector(".your-book-list").innerHTML = "";

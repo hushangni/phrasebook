@@ -151,6 +151,22 @@ h2 {
     opacity: 1;
     top: 0px; } }
 
+@keyframes shake {
+  10%, 50% {
+    transform: translate3d(-1px, 0, 0); }
+  15%, 45% {
+    transform: translate3d(2px, 0, 0); }
+  20%, 30%, 40% {
+    transform: translate3d(-4px, 0, 0); }
+  25%, 35% {
+    transform: translate3d(4px, 0, 0); } }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
 img {
   width: 100%;
   display: block; }
@@ -227,7 +243,10 @@ input {
       color: #B8C5B0; }
 
 .main-container {
-  display: none; }
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear; }
 
 .saved-aside {
   width: 300px;
@@ -237,6 +256,7 @@ input {
   text-align: center;
   overflow-y: scroll; }
   .saved-aside #bookTitle {
+    caret-color: #6daf9d;
     margin: 0 auto;
     width: 200px;
     font-size: 2rem;
@@ -246,6 +266,10 @@ input {
     padding: 5px; }
     .saved-aside #bookTitle::placeholder {
       opacity: 0.4; }
+    .saved-aside #bookTitle:focus {
+      box-shadow: 0 0 10px #89baac; }
+  .saved-aside .save-phrase-book-button {
+    background-color: #eee; }
   .saved-aside .phrasebook-title {
     font-size: 3.3rem;
     background: #dac492;
@@ -272,7 +296,7 @@ input {
 
 .translate-section {
   width: calc(100% - 300px);
-  height: 70vh;
+  height: calc(100vh - 250px);
   transition: 0.5s ease-in;
   display: flex;
   position: relative;
@@ -283,9 +307,10 @@ input {
     position: absolute;
     top: 0;
     right: 0;
-    color: white; }
+    color: white;
+    padding: 10px 20px; }
     .translate-section .signout-button:hover, .translate-section .signout-button:focus {
-      color: #D8C494; }
+      color: #d85454; }
   .translate-section .original-header {
     text-align: left; }
   .translate-section .translated-header {
@@ -315,6 +340,7 @@ input {
       font-weight: 300; }
     .translate-section .translate-container .translation-box #originalText,
     .translate-section .translate-container .translation-box #translatedText {
+      caret-color: #6daf9d;
       width: 300px;
       height: 175px;
       font-size: 2.5rem;
@@ -327,6 +353,9 @@ input {
       .translate-section .translate-container .translation-box #originalText::placeholder,
       .translate-section .translate-container .translation-box #translatedText::placeholder {
         opacity: 0.4; }
+      .translate-section .translate-container .translation-box #originalText:focus,
+      .translate-section .translate-container .translation-box #translatedText:focus {
+        box-shadow: 0 0 20px #89baac; }
     .translate-section .translate-container .save-button,
     .translate-section .translate-container .translate-button {
       display: block;
@@ -342,7 +371,7 @@ input {
 
 .your-books {
   width: calc(100vw - 300px);
-  height: 30vh;
+  height: 250px;
   border: 3px solid white;
   background: transparent;
   align-self: flex-end;
@@ -355,7 +384,11 @@ input {
   align-items: flex-start;
   overflow-x: scroll; }
   .your-books .your-book-list {
-    display: flex; }
+    display: flex;
+    position: relative; }
+    .your-books .your-book-list h3 {
+      margin: 5px 0 5px;
+      word-wrap: break-word; }
     .your-books .your-book-list .book-item {
       height: 120px;
       width: 125px;
@@ -364,13 +397,67 @@ input {
       font-size: 1.6rem;
       text-emphasis: wrap;
       text-align: center;
-      cursor: pointer;
       background-color: #EEEEEE;
       color: #333333; }
+      .your-books .your-book-list .book-item .book-icons {
+        width: 105px;
+        position: absolute;
+        bottom: 10px;
+        display: flex;
+        justify-content: space-around; }
+        .your-books .your-book-list .book-item .book-icons .delete-book {
+          margin-top: 3px;
+          font-size: 2.2rem;
+          cursor: pointer;
+          transition: all 0.2s ease-in; }
+          .your-books .your-book-list .book-item .book-icons .delete-book:hover {
+            animation: shake 2s infinite;
+            color: #d85454; }
+        .your-books .your-book-list .book-item .book-icons .view-book {
+          font-size: 2.6rem;
+          transition: all 0.2s ease-in;
+          cursor: pointer; }
+          .your-books .your-book-list .book-item .book-icons .view-book:hover {
+            transform: scale(1.15);
+            color: #60b2d1; }
   .your-books .phrase-list-modal {
-    display: none; }
+    display: none;
+    position: absolute;
+    height: 170%;
+    background-color: #fff;
+    top: -66px;
+    left: 0;
+    z-index: 2; }
+    .your-books .phrase-list-modal .close-container {
+      position: fixed;
+      width: 10px;
+      cursor: pointer; }
+      .your-books .phrase-list-modal .close-container .close-modal {
+        font-size: 3.8rem;
+        position: absolute;
+        top: -14px;
+        left: -8px; }
+      .your-books .phrase-list-modal .close-container:hover .close-modal {
+        animation: spin 1s infinite;
+        color: #d85454; }
+    .your-books .phrase-list-modal .phrase {
+      background-color: #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 200px;
+      margin: 10px 10px 10px 0px;
+      font-size: 1.6rem;
+      padding: 10px; }
+      .your-books .phrase-list-modal .phrase .original-text {
+        font-size: 1.7rem;
+        margin-bottom: 0;
+        color: #333;
+        font-weight: 600; }
+    .your-books .phrase-list-modal .phrase:nth-child(2) {
+      margin-left: 10px; }
   .your-books .phrasebook-title {
     margin: 0 0 10px 20px;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     color: white;
     font-weight: 400; }

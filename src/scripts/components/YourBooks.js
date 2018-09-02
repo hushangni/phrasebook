@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import swal from 'sweetalert';
 
 class YourBooks extends Component {
     constructor() {
@@ -65,15 +66,42 @@ class YourBooks extends Component {
         e.preventDefault();
     }
 
+    viewBook = (bookName) => {
+        const bookClass = bookName.split(" ").join("").replace(/[^a-zA-Z ]/g, "");
+        document.querySelector(`.${bookClass} + .phrase-list-modal`).style.display = "flex";
+    }
+
+    closeModal = (bookName) => {
+        const bookClass = bookName.split(" ").join("").replace(/[^a-zA-Z ]/g, "");
+        document.querySelector(`.${bookClass} + .phrase-list-modal`).style.display = "none";
+
+    }
+
     deleteBook = (bookName) => {
-        const phraseDbRef = firebase.database().ref(`/${this.props.userID}/bookList/${bookName}`);
-        phraseDbRef.remove();
-        if (this.state.booksLeft === 1) {
-            this.setState({
-                books: [],
-                booksLeft: 0
-            })
-        }
+        swal({
+            title: "Are you sure?",
+            text: "All of your phrases in this book will be deleted!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                const phraseDbRef = firebase.database().ref(`/${this.props.userID}/bookList/${bookName}`);
+                phraseDbRef.remove();
+                if (this.state.booksLeft === 1) {
+                    this.setState({
+                        books: [],
+                        booksLeft: 0
+                    })
+                }
+                swal("Poof! Your phrase book has been deleted!", {
+                    icon: "success",
+                });
+            } else {
+                swal("No worries, your phrase book is safe!");
+            }
+        });
     }
 
     render() {
@@ -85,8 +113,12 @@ class YourBooks extends Component {
                 {this.state.books.map((book) => {
                     return (
                         <div className="book-item" onClick={this.handleClick}>
-                        <h3>{book.bookName}</h3>
+                            <h3 className={book.bookName.split(" ").join("").replace(/[^a-zA-Z ]/g, "")}>{book.bookName}</h3>
                             <div className="phrase-list-modal">
+                                <div className="close-container">
+                                    <i className="fas fa-times close-modal" onClick={() => {this.closeModal(book.bookName)}}></i>
+                                </div>
+
                             {book.phrases.map((phrase) => {
                                 return(
                                     <div className="phrase">
@@ -96,7 +128,10 @@ class YourBooks extends Component {
                                 )
                             })}
                             </div>
-                        <div className="delete-book" onClick={() => this.deleteBook(book.bookName)}>x</div>
+                            <div className="book-icons">
+                                <div className="view-book" onClick={() => this.viewBook(book.bookName)}><i className="fas fa-eye"></i></div>
+                                <div className="delete-book" onClick={() => this.deleteBook(book.bookName)}><i className="fas fa-trash-alt"></i></div>
+                            </div>
                         </div>
                     )
                 })}

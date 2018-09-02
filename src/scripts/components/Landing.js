@@ -35,8 +35,9 @@ class Landing extends Component {
         }).then(() => {
             const land = document.querySelector(".landing");
             const translate = document.querySelector(".main-container");
+            translate.style.visibility = "visible";
+            translate.style.opacity = 1;
             land.style.display = "none";
-            translate.style.display = "flex";
         });
     }
 
@@ -45,8 +46,9 @@ class Landing extends Component {
 
         const land = document.querySelector(".landing");
         const translate = document.querySelector(".main-container");
+        document.querySelector(".main-container").style.visibility = "visible";
+        document.querySelector(".main-container").style.opacity = 1;
         land.style.display = "none";
-        translate.style.display = "flex";
     }
 
     render() {

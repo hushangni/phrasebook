@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import swal from 'sweetalert';
 
 
 class SavedAside extends Component {
@@ -19,7 +20,14 @@ class SavedAside extends Component {
         this.setState( {
             currentPhrasesToSave: this.props.phrasesList
         }, () => {
-            this.addBookToDatabase();
+
+            if (this.state.currentBookTitle.replace(/\s/g, '') === '') {
+                swal("Hold on!", "Please enter a title for your book 📖 ", "info");
+            } else if (this.props.phrasesList.length == 0) {
+                swal("Hold on!", "Please translate and save some phrases for your book 💬 ", "info");
+            } else {
+                this.addBookToDatabase();
+            }
         })
 
     }
@@ -42,8 +50,9 @@ class SavedAside extends Component {
 
     handleChange = (e) => {
         e.preventDefault();
+        const bookTitle = e.target.value;
         this.setState({
-            currentBookTitle: e.target.value
+            currentBookTitle: bookTitle
         });
     }
 
@@ -53,7 +62,7 @@ class SavedAside extends Component {
             <aside className="saved-aside" onChange={this.handleChange}>
                 <h2 className="phrasebook-title">Phrasebook</h2>
                 <form action="">
-                    <input type="text" name="bookTitle" id="bookTitle" placeholder="Book Title" onChange={this.handleChange} required/>
+                    <input type="text" name="bookTitle" id="bookTitle" placeholder="Book Title" onChange={this.handleChange} maxLength='22' required/>
                     {this.props.phrasesList.map((phrase) => {
                         return (
                             <div className="phrase" key={phrase.key}>
