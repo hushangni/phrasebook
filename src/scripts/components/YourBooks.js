@@ -6,15 +6,21 @@ class YourBooks extends Component {
         super();
         this.state = {
             userID: '',
-            books: []
+            books: [],
+            booksLeft: 0
         }
     }
 
     componentDidMount() {
-        // console.log(this.props);
-        console.log(firebase.auth().currentUser)
+        console.log("component did mount called in your books");
+
         firebase.auth().onAuthStateChanged((user) => {
             if(user !== null){
+                console.log(`this fore update called`);
+                this.setState({
+                    books: [],
+                    booksLeft: 0
+                })
                 const dbRef = firebase.database().ref(`/${user.uid}/bookList`);
                 dbRef.on('value', (snapshot) => {
                     if (snapshot.val()) {
@@ -47,8 +53,10 @@ class YourBooks extends Component {
                     phrases: phrases
                 })
             });
+        console.log("this is books array length", booksArray.length);
         this.setState({
-            books: booksArray
+            books: booksArray,
+            booksLeft: booksArray.length
         });
 
     }
@@ -60,6 +68,12 @@ class YourBooks extends Component {
     deleteBook = (bookName) => {
         const phraseDbRef = firebase.database().ref(`/${this.props.userID}/bookList/${bookName}`);
         phraseDbRef.remove();
+        if (this.state.booksLeft === 1) {
+            this.setState({
+                books: [],
+                booksLeft: 0
+            })
+        }
     }
 
     render() {

@@ -143,6 +143,14 @@ h1 {
 h2 {
   font-family: "Oswald", sans-serif; }
 
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    top: 100px; }
+  to {
+    opacity: 1;
+    top: 0px; } }
+
 img {
   width: 100%;
   display: block; }
@@ -180,7 +188,7 @@ input {
   border: 2px solid white;
   transition: 0.3s; }
   .button:hover, .button:focus {
-    box-shadow: inset 9em 0 0 0 white;
+    box-shadow: inset 12em 0 0 0 white;
     color: #B8C5B0; }
 
 .landing {
@@ -197,7 +205,9 @@ input {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -15px; }
+    left: -15px;
+    animation: fadeUpIn 2s;
+    -webkit-animation: fadeUpIn 2s; }
     .landing .logo-words .logo {
       width: 50px;
       height: 100%;
@@ -272,6 +282,7 @@ input {
   .translate-section .signout-button {
     position: absolute;
     top: 0;
+    right: 0;
     color: white; }
     .translate-section .signout-button:hover, .translate-section .signout-button:focus {
       color: #D8C494; }

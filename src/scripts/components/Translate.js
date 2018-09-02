@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 
+
+
 import SavedAside from './SavedAside';
 import YourBooks from './YourBooks';
+
 
 // urls/keys for Yandex API
 const translateURL = "https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -98,6 +101,18 @@ class Translate extends Component {
                 })
             }
         });
+
+        if (performance.navigation.type == 1) {
+
+            firebase.auth().signOut().then(function () {
+                const land = document.querySelector(".landing");
+                const translate = document.querySelector(".main-container");
+                land.style.display = "flex";
+                translate.style.display = "none";
+            })
+
+            document.querySelector(".your-book-list").innerHTML = "";
+        }
     }
 
 
@@ -137,6 +152,10 @@ class Translate extends Component {
         });
 
         this.translateText();
+    }
+
+    forceUpdate = () => {
+        this.forceUpdate();
     }
 
     handleSave = (e) => {
@@ -181,6 +200,8 @@ class Translate extends Component {
             land.style.display = "flex";
             translate.style.display = "none";
         })
+        window.location.reload();
+        document.querySelector(".your-book-list").innerHTML = "";
     }
 
     render() {
@@ -196,7 +217,7 @@ class Translate extends Component {
                         </select>
                         <label htmlFor="langToTranslate" className="visually-hidden">Select the language to translate to</label>
 
-                        <h2>Original</h2>
+                        <h2 className="original-header">Original</h2>
                         <form action="" className="translation-box">
                             <textarea type="text" name="originalText" id="originalText" placeholder="Text to translate..." maxLength='71' onChange={this.handleChange}/>
                             <label htmlFor="originalText" className="visually-hidden">Enter text to translate</label>
@@ -207,7 +228,7 @@ class Translate extends Component {
                     </div>
 
                     <div className="translate-container">
-                        <h2>Translated</h2>
+                        <h2 className="translated-header">Translated</h2>
                         <form className="translation-box">
                             <textarea type="text" name="translatedText" id="translatedText" placeholder="Translated text..." value="" maxLength='71' onChange={this.handleChange}/>
                             <label htmlFor="translatedText" className="visually-hidden">Translated text appears here</label>
@@ -217,7 +238,7 @@ class Translate extends Component {
 
                     </div>
                 </section>
-                <YourBooks userID={this.state.userID}/>
+                <YourBooks userID={this.state.userID} onChange={this.forceUpdate}/>
             </div>
         )
     }

@@ -45,7 +45,7 @@ input {
 
     &:hover,
     &:focus {
-        box-shadow: inset 9em 0 0 0 white;
+        box-shadow: inset 12em 0 0 0 white;
         color: #B8C5B0;
     }
 }
@@ -70,6 +70,8 @@ input {
         align-items: center;
         position: relative;
         left: -15px;
+        animation: fadeUpIn 2s;
+        -webkit-animation: fadeUpIn 2s;
 
         .logo {
             width: 50px;
@@ -182,6 +184,7 @@ input {
     .signout-button {
         position: absolute;
         top: 0;
+        right: 0;
         color: white;
         &:hover,
         &:focus {
