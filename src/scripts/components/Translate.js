@@ -208,9 +208,20 @@ class Translate extends Component {
         document.querySelector(".your-book-list").innerHTML = "";
     }
 
+    handleToggle = (e) => {
+        e.preventDefault();
+        document.querySelector('.hamburger-toggle').classList.toggle("x-toggle");
+        document.querySelector('.saved-aside').classList.toggle("res-menu");
+    }
+
     render() {
         return (
             <div className="main-container">
+                <div className="hamburger-toggle" onClick={this.handleToggle}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} userID={this.state.userID}/>
                 <section className="translate-section">
                     <a href="#" className="button signout-button" onClick={this.handleSignOut}>Sign out</a>
