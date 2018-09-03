@@ -184,7 +184,7 @@ input {
 
 // translate styles
 .translate-section {
-    width: calc(100% - 300px);
+    width: calc(100vw - 300px);
     height: calc(100vh - 250px);
     transition: 0.5s ease-in;
     display: flex;
@@ -421,6 +421,130 @@ input {
         font-size: 2.6rem;
         color: white;
         font-weight: 400;
+    }
+
+}
+
+@media screen and (max-width: 940px) {
+    .translate-section {
+        width: calc(100vw - 240px);
+
+        .signout-button {
+            font-size: 1.6rem;
+        }
+        .translate-container {
+            .translation-box {
+
+                #originalText,
+                #translatedText {
+                    width: 220px;
+                    height: 155px;
+                    font-size: 2rem;
+                    padding: 20px;
+                    line-height: 2.4rem;
+
+                }
+            }
+
+            .save-button,
+            .translate-button {
+                font-size: 2rem;
+                margin: 30px 0 0;
+                padding: 10px 20px;
+            }
+
+            .save-button {
+                margin-left: 130px;
+                &:hover,
+                &:focus {
+                    color: #B5C5B3;
+                }
+            }
+
+            #langToTranslate {
+                padding: 6px;
+                font-size: 1.4rem;
+                height: 50px;
+                width: 180px;
+                top: 50px;
+                left: 140px;
+            }
+        }
+    }
+
+    .saved-aside {
+        width: 240px;
+    }
+
+    .your-books {
+        width: calc(100vw - 240px);
+    }
+
+}
+
+@media screen and (max-width: 730px) {
+    .translate-section {
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .signout-button {
+            font-size: 1.5rem;
+            padding: 10px 15px;
+        }
+
+
+        .translate-container {
+            .original-header {
+                text-align: left;
+                font-size: 3rem;
+                margin-top: 55px;
+                margin-bottom: 10px;
+            }
+
+            .translated-header {
+                text-align: right;
+                font-size: 3rem;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            .translation-box {
+
+                #originalText,
+                #translatedText {
+                    width: 350px;
+                    height: 100px;
+                    font-size: 1.8rem;
+                    padding: 20px;
+                    line-height: 2.2rem;
+                    margin-bottom: 0;
+
+                }
+
+                .save-button,
+                .translate-button {
+                    font-size: 1.6rem;
+                    margin: 10px 0 0;
+                    position: absolute;
+                }
+
+                .save-button {
+                    margin: 10px 0 0 268px;
+                    &:hover,
+                    &:focus {
+                        color: #B5C5B3;
+                    }
+                }
+            }
+
+            #langToTranslate {
+                font-size: 1.4rem;
+                top: 60px;
+                left: 100px;
+                height: 40px;
+            }
+
+        }
     }
 
 }

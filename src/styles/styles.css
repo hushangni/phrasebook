@@ -295,7 +295,7 @@ input {
       margin: 0; }
 
 .translate-section {
-  width: calc(100% - 300px);
+  width: calc(100vw - 300px);
   height: calc(100vh - 250px);
   transition: 0.5s ease-in;
   display: flex;
@@ -461,3 +461,76 @@ input {
     font-size: 2.6rem;
     color: white;
     font-weight: 400; }
+
+@media screen and (max-width: 940px) {
+  .translate-section {
+    width: calc(100vw - 240px); }
+    .translate-section .signout-button {
+      font-size: 1.6rem; }
+    .translate-section .translate-container .translation-box #originalText,
+    .translate-section .translate-container .translation-box #translatedText {
+      width: 220px;
+      height: 155px;
+      font-size: 2rem;
+      padding: 20px;
+      line-height: 2.4rem; }
+    .translate-section .translate-container .save-button,
+    .translate-section .translate-container .translate-button {
+      font-size: 2rem;
+      margin: 30px 0 0;
+      padding: 10px 20px; }
+    .translate-section .translate-container .save-button {
+      margin-left: 130px; }
+      .translate-section .translate-container .save-button:hover, .translate-section .translate-container .save-button:focus {
+        color: #B5C5B3; }
+    .translate-section .translate-container #langToTranslate {
+      padding: 6px;
+      font-size: 1.4rem;
+      height: 50px;
+      width: 180px;
+      top: 50px;
+      left: 140px; }
+  .saved-aside {
+    width: 240px; }
+  .your-books {
+    width: calc(100vw - 240px); } }
+
+@media screen and (max-width: 730px) {
+  .translate-section {
+    flex-direction: column;
+    justify-content: flex-start; }
+    .translate-section .signout-button {
+      font-size: 1.5rem;
+      padding: 10px 15px; }
+    .translate-section .translate-container .original-header {
+      text-align: left;
+      font-size: 3rem;
+      margin-top: 55px;
+      margin-bottom: 10px; }
+    .translate-section .translate-container .translated-header {
+      text-align: right;
+      font-size: 3rem;
+      margin-top: 30px;
+      margin-bottom: 10px; }
+    .translate-section .translate-container .translation-box #originalText,
+    .translate-section .translate-container .translation-box #translatedText {
+      width: 350px;
+      height: 100px;
+      font-size: 1.8rem;
+      padding: 20px;
+      line-height: 2.2rem;
+      margin-bottom: 0; }
+    .translate-section .translate-container .translation-box .save-button,
+    .translate-section .translate-container .translation-box .translate-button {
+      font-size: 1.6rem;
+      margin: 10px 0 0;
+      position: absolute; }
+    .translate-section .translate-container .translation-box .save-button {
+      margin: 10px 0 0 268px; }
+      .translate-section .translate-container .translation-box .save-button:hover, .translate-section .translate-container .translation-box .save-button:focus {
+        color: #B5C5B3; }
+    .translate-section .translate-container #langToTranslate {
+      font-size: 1.4rem;
+      top: 60px;
+      left: 100px;
+      height: 40px; } }
