@@ -466,8 +466,9 @@ input {
   float: right;
   display: none;
   cursor: pointer;
+  right: 0;
   margin-top: 10px;
-  margin-left: 10px; }
+  margin-right: 10px; }
   .hamburger-toggle span {
     background: white;
     height: 2px;
@@ -570,7 +571,7 @@ input {
 @media screen and (max-width: 600px) {
   .hamburger-toggle {
     display: block;
-    position: relative;
+    position: absolute;
     z-index: 2; }
   .saved-aside {
     position: absolute;
@@ -584,4 +585,8 @@ input {
     opacity: 0;
     z-index: 1;
     -webkit-transform: translate(0);
-    transform: translate(0); } }
+    transform: translate(0); }
+  .saved-aside.res-menu {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    opacity: 1; } }
