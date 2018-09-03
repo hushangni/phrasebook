@@ -118,7 +118,7 @@ input {
     display: inline-block;
     background-color: white;
     text-align: center;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     #bookTitle {
         caret-color: #6daf9d;
@@ -311,7 +311,7 @@ input {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     .your-book-list {
         display: flex;
@@ -422,5 +422,9 @@ input {
         color: white;
         font-weight: 400;
     }
+
+}
+
+@media screen and (max-width: 600px) {
 
 }

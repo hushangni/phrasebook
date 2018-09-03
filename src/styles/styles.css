@@ -254,7 +254,7 @@ input {
   display: inline-block;
   background-color: white;
   text-align: center;
-  overflow-y: scroll; }
+  overflow-y: auto; }
   .saved-aside #bookTitle {
     caret-color: #6daf9d;
     margin: 0 auto;
@@ -382,7 +382,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  overflow-x: scroll; }
+  overflow-x: auto; }
   .your-books .your-book-list {
     display: flex;
     position: relative; }
