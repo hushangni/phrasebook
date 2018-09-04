@@ -440,12 +440,19 @@ input {
       height: 120px;
       width: 125px;
       margin: 0 20px;
-      padding: 10px;
-      font-size: 1.6rem;
+      padding: 12px;
+      font-size: 1.5rem;
       text-emphasis: wrap;
       text-align: center;
-      background-color: #EEEEEE;
-      color: #333333; }
+      background-color: #eee;
+      border: 4px solid white;
+      color: #222;
+      cursor: pointer;
+      transition: all 0.2s ease-in; }
+      .your-books .your-book-list .book-item:hover {
+        background-color: white;
+        color: #333;
+        box-shadow: 3px 5px 3px #333; }
       .your-books .your-book-list .book-item .book-icons {
         width: 105px;
         position: absolute;
@@ -482,7 +489,7 @@ input {
       .your-books .phrase-list-modal .close-container .close-modal {
         font-size: 3.8rem;
         position: absolute;
-        top: -14px;
+        top: -13px;
         left: -8px; }
       .your-books .phrase-list-modal .close-container:hover .close-modal {
         animation: spin 1s infinite;
@@ -495,7 +502,8 @@ input {
       min-width: 200px;
       margin: 10px 10px 10px 0px;
       font-size: 1.6rem;
-      padding: 10px; }
+      padding: 10px;
+      cursor: default; }
       .your-books .phrase-list-modal .phrase .original-text {
         font-size: 1.7rem;
         margin-bottom: 0;
