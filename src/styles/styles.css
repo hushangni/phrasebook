@@ -663,23 +663,25 @@ input {
     padding-bottom: 250px; }
     .translate-section .signout-button {
       display: none; }
-    .translate-section .translate-container #langToTranslate {
-      top: 75px;
-      width: 120px; }
-    .translate-section .translate-container .original-header {
-      text-align: left;
-      margin-top: 70px; }
-    .translate-section .translate-container .translated-header {
-      text-align: left;
-      margin-top: 20px; }
-    .translate-section .translate-container .translation-box #originalText,
-    .translate-section .translate-container .translation-box #translatedText {
-      width: 80vw;
-      height: 120px;
-      padding-right: 25px; }
-    .translate-section .translate-container .translation-box .save-button,
-    .translate-section .translate-container .translation-box .translate-button {
-      display: none; }
+    .translate-section .translate-container {
+      display: block; }
+      .translate-section .translate-container #langToTranslate {
+        top: 75px;
+        width: 120px; }
+      .translate-section .translate-container .original-header {
+        text-align: left;
+        margin-top: 70px; }
+      .translate-section .translate-container .translated-header {
+        text-align: left;
+        margin-top: 20px; }
+      .translate-section .translate-container .translation-box #originalText,
+      .translate-section .translate-container .translation-box #translatedText {
+        width: 80vw;
+        height: 120px;
+        padding-right: 25px; }
+      .translate-section .translate-container .translation-box .save-button,
+      .translate-section .translate-container .translation-box .translate-button {
+        display: none; }
   .your-books-container {
     position: relative;
     margin: 0; }
