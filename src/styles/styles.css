@@ -342,11 +342,12 @@ input {
   align-items: center;
   color: white; }
   .translate-section .signout-button {
+    font-size: 2rem;
     position: absolute;
     top: 0;
     right: 0;
     color: white;
-    padding: 10px 20px; }
+    padding: 8px 15px; }
     .translate-section .signout-button:hover, .translate-section .signout-button:focus {
       color: #d85454; }
   .translate-section .original-header {
@@ -594,9 +595,9 @@ input {
       .translate-section .translate-container .save-button:hover, .translate-section .translate-container .save-button:focus {
         color: #B5C5B3; }
     .translate-section .translate-container #langToTranslate {
-      padding: 6px;
+      padding: 5px;
       font-size: 1.4rem;
-      height: 40px;
+      height: 35px;
       width: 130px;
       top: 50px;
       left: 170px; }
@@ -615,7 +616,7 @@ input {
     .translate-section .translate-container .original-header {
       text-align: left;
       font-size: 3rem;
-      margin-top: 55px;
+      margin-top: 40px;
       margin-bottom: 10px; }
     .translate-section .translate-container .translated-header {
       text-align: right;
@@ -642,7 +643,7 @@ input {
         color: #B5C5B3; }
     .translate-section .translate-container #langToTranslate {
       font-size: 1.4rem;
-      top: 60px;
+      top: 45px;
       left: 100px;
       height: 40px; } }
 

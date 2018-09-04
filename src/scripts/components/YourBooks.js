@@ -87,14 +87,14 @@ class YourBooks extends Component {
         })
         .then((willDelete) => {
             if (willDelete) {
-                const phraseDbRef = firebase.database().ref(`/${this.props.userID}/bookList/${bookName}`);
-                phraseDbRef.remove();
                 if (this.state.booksLeft === 1) {
                     this.setState({
                         books: [],
                         booksLeft: 0
                     })
                 }
+                const phraseDbRef = firebase.database().ref(`/${this.props.userID}/bookList/${bookName}`);
+                phraseDbRef.remove();
                 swal("Poof! Your phrase book has been deleted!", {
                     icon: "success",
                 });
