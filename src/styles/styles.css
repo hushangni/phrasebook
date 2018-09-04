@@ -347,7 +347,8 @@ input {
     top: 0;
     right: 0;
     color: white;
-    padding: 8px 15px; }
+    padding: 8px 15px;
+    z-index: 2; }
     .translate-section .signout-button:hover, .translate-section .signout-button:focus {
       color: #d85454; }
   .translate-section .original-header {
