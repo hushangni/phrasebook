@@ -167,6 +167,36 @@ h2 {
   to {
     transform: rotate(360deg); } }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1); }
+  30% {
+    transform: scale(1); }
+  40% {
+    transform: scale(1.1); }
+  50% {
+    transform: scale(1); }
+  60% {
+    transform: scale(1); }
+  70% {
+    transform: scale(1.07); }
+  80% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(10deg); }
+  25% {
+    transform: rotate(-10deg); }
+  50% {
+    transform: rotate(20deg); }
+  75% {
+    transform: rotate(-5deg); }
+  100% {
+    transform: rotate(0deg); } }
+
 img {
   width: 100%;
   display: block; }
@@ -210,7 +240,8 @@ input {
 .signout-symbol,
 .save-symbol,
 .translate-symbol {
-  font-size: 3rem; }
+  font-size: 3.3rem;
+  display: none; }
 
 .landing {
   position: absolute;
@@ -375,6 +406,12 @@ input {
     .translate-section .translate-container .translate-button:hover, .translate-section .translate-container .translate-button:focus {
       color: #D8C494; }
 
+.your-books-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 250px; }
+
 .your-books {
   width: calc(100vw - 300px);
   height: 250px;
@@ -472,9 +509,8 @@ input {
   float: right;
   display: none;
   cursor: pointer;
-  right: 0;
-  margin-top: 10px;
-  margin-right: 10px; }
+  top: 20px;
+  right: 30px; }
   .hamburger-toggle span {
     background: white;
     height: 2px;
@@ -576,7 +612,7 @@ input {
 
 @media screen and (max-width: 600px) {
   .hamburger-toggle {
-    display: block;
+    display: inline-block;
     position: absolute;
     z-index: 2; }
   .saved-aside {
@@ -594,12 +630,39 @@ input {
     -webkit-transform: translate(0);
     transform: translate(0);
     opacity: 1; }
-  .translate-section {
+  .signout-symbol,
+  .save-symbol,
+  .translate-symbol {
+    display: inline-block;
+    position: absolute;
+    cursor: pointer; }
+  .signout-symbol {
+    top: 15px;
+    left: 25px;
+    font-size: 3.2rem;
+    z-index: 2; }
+    .signout-symbol:hover {
+      animation: wiggle 2s infinite; }
+  .save-symbol,
+  .translate-symbol {
+    bottom: 10px;
+    color: #777;
+    right: 5%; }
+  .fa-sync-alt:hover {
+    animation: spin 2s infinite; }
+  .fa-save:hover {
+    animation: pulse 1.2s infinite; }
+  .main-container {
     height: 100vh;
-    width: 100vw; }
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column; }
+  .translate-section {
+    height: 480px;
+    width: 100%;
+    padding-bottom: 250px; }
     .translate-section .signout-button {
-      left: 0;
-      right: auto; }
+      display: none; }
     .translate-section .translate-container #langToTranslate {
       top: 75px;
       width: 120px; }
@@ -608,11 +671,19 @@ input {
       margin-top: 70px; }
     .translate-section .translate-container .translated-header {
       text-align: left;
-      margin-top: 30px; }
+      margin-top: 20px; }
     .translate-section .translate-container .translation-box #originalText,
     .translate-section .translate-container .translation-box #translatedText {
       width: 80vw;
-      height: 100px; }
+      height: 120px;
+      padding-right: 25px; }
     .translate-section .translate-container .translation-box .save-button,
     .translate-section .translate-container .translation-box .translate-button {
-      display: none; } }
+      display: none; }
+  .your-books-container {
+    position: relative;
+    margin: 0; }
+  .your-books {
+    width: 100%;
+    height: 250px;
+    position: absolute; } }

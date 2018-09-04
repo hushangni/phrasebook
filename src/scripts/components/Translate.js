@@ -225,7 +225,7 @@ class Translate extends Component {
                 <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} userID={this.state.userID}/>
                 <section className="translate-section">
                     <a href="#" className="button signout-button" onClick={this.handleSignOut}>Sign out</a>
-                    <i class="fas fa-backspace signout-symbol" onClick={this.handleSignOut}></i>
+                    <i className="fas fa-backspace signout-symbol" onClick={this.handleSignOut}></i>
                     <div className="translate-container">
                         <select name="langToTranslate" id="langToTranslate" onChange={this.handleChange}>
                             <option value=""> ⬇ to language    </option>
@@ -251,12 +251,14 @@ class Translate extends Component {
                             <label htmlFor="translatedText" className="visually-hidden">Translated text appears here</label>
 
                             <input type="submit" value="Save" className="save-button button" onClick={this.handleSave}/>
-                            <i class="fas fa-save save-symbol" onClick={this.handleSave}></i>
+                            <i className="fas fa-save save-symbol" onClick={this.handleSave}></i>
                         </form>
 
                     </div>
                 </section>
+                <div className="your-books-container">
                 <YourBooks userID={this.state.userID} onChange={this.forceUpdate}/>
+                </div>
             </div>
         )
     }

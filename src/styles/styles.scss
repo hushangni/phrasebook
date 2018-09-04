@@ -1,6 +1,7 @@
 @import 'partials/_setup.scss';
 @import 'partials/_typography.scss';
 @import 'partials/_utils.scss';
+// -webkit-text-stroke: 0.5px #333;
 
 img {
     width: 100%;
@@ -53,8 +54,10 @@ input {
 .signout-symbol,
 .save-symbol,
 .translate-symbol {
-    font-size: 3rem;
+    font-size: 3.3rem;
+    display: none;
 }
+
 
 // landing styles
 .landing {
@@ -304,6 +307,13 @@ input {
     }
 }
 
+.your-books-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 250px;
+}
+
 //
 .your-books {
     width: calc(100vw - 300px);
@@ -436,9 +446,8 @@ input {
     float: right;
     display: none;
     cursor: pointer;
-    right: 0;
-    margin-top: 10px;
-    margin-right: 10px;
+    top: 20px;
+    right: 30px;
 
     & span {
         background: white;
@@ -597,7 +606,7 @@ input {
 
 @media screen and (max-width: 600px) {
     .hamburger-toggle {
-        display: block;
+        display: inline-block;
         position: absolute;
         z-index: 2;
     }
@@ -622,13 +631,56 @@ input {
 
     }
 
-    .translate-section {
+    .signout-symbol,
+    .save-symbol,
+    .translate-symbol {
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .signout-symbol {
+        top: 15px;
+        left: 25px;
+        font-size: 3.2rem;
+        z-index: 2;
+
+        &:hover {
+            animation: wiggle 2s infinite;
+        }
+    }
+
+    .save-symbol,
+    .translate-symbol {
+        bottom: 10px;
+        color: #777;
+        right: 5%;
+    }
+
+    .fa-sync-alt:hover {
+        animation: spin 2s infinite;
+    }
+
+    .fa-save:hover {
+        animation: pulse 1.2s infinite;
+    }
+
+
+
+    .main-container {
         height: 100vh;
-        width: 100vw;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .translate-section {
+        height: 480px;
+        width: 100%;
+        padding-bottom: 250px;
 
         .signout-button {
-            left: 0;
-            right: auto;
+            display: none;
         }
 
         .translate-container {
@@ -645,7 +697,7 @@ input {
 
             .translated-header {
                 text-align: left;
-                margin-top: 30px;
+                margin-top: 20px;
             }
 
             .translation-box {
@@ -653,7 +705,8 @@ input {
                 #originalText,
                 #translatedText {
                     width: 80vw;
-                    height: 100px;
+                    height: 120px;
+                    padding-right: 25px;
                 }
 
                 .save-button,
@@ -662,5 +715,16 @@ input {
                 }
             }
         }
+    }
+
+    .your-books-container {
+        position: relative;
+        margin: 0;
+    }
+
+    .your-books {
+        width: 100%;
+        height: 250px;
+        position: absolute;
     }
 }
