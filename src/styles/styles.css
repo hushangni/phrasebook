@@ -647,6 +647,8 @@ input {
       height: 40px; } }
 
 @media screen and (max-width: 600px) {
+  .landing {
+    height: calc(100vh - 40px); }
   .hamburger-toggle {
     display: inline-block;
     position: absolute;
@@ -688,7 +690,7 @@ input {
   .fa-save:hover {
     animation: pulse 1.2s infinite; }
   .main-container {
-    height: 100vh;
+    height: calc(100vh - 40px);
     display: flex;
     flex-direction: column; }
   .translate-section {
@@ -698,6 +700,8 @@ input {
       display: none; }
     .translate-section .translate-container {
       display: block; }
+      .translate-section .translate-container:nth-of-type(2) {
+        margin-bottom: 20px; }
       .translate-section .translate-container #langToTranslate {
         top: 75px;
         width: 120px; }
@@ -710,7 +714,7 @@ input {
       .translate-section .translate-container .translation-box #originalText,
       .translate-section .translate-container .translation-box #translatedText {
         width: 80vw;
-        height: 120px;
+        height: 100px;
         padding-right: 25px; }
       .translate-section .translate-container .translation-box .save-button,
       .translate-section .translate-container .translation-box .translate-button {

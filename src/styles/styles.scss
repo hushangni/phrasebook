@@ -651,6 +651,9 @@ input {
 }
 
 @media screen and (max-width: 600px) {
+    .landing {
+        height: calc(100vh - 40px);
+    }
     .hamburger-toggle {
         display: inline-block;
         position: absolute;
@@ -711,7 +714,7 @@ input {
     }
 
     .main-container {
-        height: 100vh;
+        height: calc(100vh - 40px);
         display: flex;
         flex-direction: column;
     }
@@ -726,6 +729,9 @@ input {
 
         .translate-container {
             display: block;
+            &:nth-of-type(2) {
+                margin-bottom: 20px;
+            }
 
             #langToTranslate {
                 top: 75px;
@@ -747,7 +753,7 @@ input {
                 #originalText,
                 #translatedText {
                     width: 80vw;
-                    height: 120px;
+                    height: 100px;
                     padding-right: 25px;
                 }
 
