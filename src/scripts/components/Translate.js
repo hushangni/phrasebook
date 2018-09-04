@@ -225,9 +225,10 @@ class Translate extends Component {
                 <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} userID={this.state.userID}/>
                 <section className="translate-section">
                     <a href="#" className="button signout-button" onClick={this.handleSignOut}>Sign out</a>
+                    <i class="fas fa-backspace signout-symbol" onClick={this.handleSignOut}></i>
                     <div className="translate-container">
                         <select name="langToTranslate" id="langToTranslate" onChange={this.handleChange}>
-                            <option value=""> ⬇ language to translate    </option>
+                            <option value=""> ⬇ to language    </option>
                             {/* dynamically populated from API*/}
                         </select>
                         <label htmlFor="langToTranslate" className="visually-hidden">Select the language to translate to</label>
@@ -238,6 +239,7 @@ class Translate extends Component {
                             <label htmlFor="originalText" className="visually-hidden">Enter text to translate</label>
 
                             <input type="submit" value="Translate" className="translate-button button" onClick={this.handleSubmit} />
+                            <i className="fas fa-sync-alt translate-symbol" onClick={this.handleSubmit} ></i>
 
                         </form>
                     </div>
@@ -249,6 +251,7 @@ class Translate extends Component {
                             <label htmlFor="translatedText" className="visually-hidden">Translated text appears here</label>
 
                             <input type="submit" value="Save" className="save-button button" onClick={this.handleSave}/>
+                            <i class="fas fa-save save-symbol" onClick={this.handleSave}></i>
                         </form>
 
                     </div>

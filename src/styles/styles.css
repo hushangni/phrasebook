@@ -207,6 +207,11 @@ input {
     box-shadow: inset 12em 0 0 0 white;
     color: #B8C5B0; }
 
+.signout-symbol,
+.save-symbol,
+.translate-symbol {
+  font-size: 3rem; }
+
 .landing {
   position: absolute;
   width: 100%;
@@ -576,7 +581,7 @@ input {
     z-index: 2; }
   .saved-aside {
     position: absolute;
-    transform: translate(-100%);
+    transform: translate(-300%);
     top: 0;
     right: 0;
     background-color: #F6F7F9;
@@ -584,10 +589,30 @@ input {
     -webkit-transition: .3s;
     transition: .3s;
     opacity: 0;
-    z-index: 1;
-    -webkit-transform: translate(0);
-    transform: translate(0); }
+    z-index: 1; }
   .saved-aside.res-menu {
     -webkit-transform: translate(0);
     transform: translate(0);
-    opacity: 1; } }
+    opacity: 1; }
+  .translate-section {
+    height: 100vh;
+    width: 100vw; }
+    .translate-section .signout-button {
+      left: 0;
+      right: auto; }
+    .translate-section .translate-container #langToTranslate {
+      top: 75px;
+      width: 120px; }
+    .translate-section .translate-container .original-header {
+      text-align: left;
+      margin-top: 70px; }
+    .translate-section .translate-container .translated-header {
+      text-align: left;
+      margin-top: 30px; }
+    .translate-section .translate-container .translation-box #originalText,
+    .translate-section .translate-container .translation-box #translatedText {
+      width: 80vw;
+      height: 100px; }
+    .translate-section .translate-container .translation-box .save-button,
+    .translate-section .translate-container .translation-box .translate-button {
+      display: none; } }

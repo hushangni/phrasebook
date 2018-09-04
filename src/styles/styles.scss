@@ -50,6 +50,12 @@ input {
     }
 }
 
+.signout-symbol,
+.save-symbol,
+.translate-symbol {
+    font-size: 3rem;
+}
+
 // landing styles
 .landing {
     position: absolute;
@@ -458,9 +464,9 @@ input {
 }
 
 .hamburger-toggle.x-toggle span:nth-child(3) {
-   -webkit-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
     transform-origin: 8px -7px;
-   -webkit-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
     transform-origin: 8px -7px;
     background-color: black;
 }
@@ -598,7 +604,7 @@ input {
 
     .saved-aside {
         position: absolute;
-        transform: translate(-100%);
+        transform: translate(-300%);
         top: 0;
         right: 0;
         background-color: #F6F7F9;
@@ -607,8 +613,6 @@ input {
         transition: .3s;
         opacity: 0;
         z-index: 1;
-        -webkit-transform: translate(0);
-        transform: translate(0);
     }
 
     .saved-aside.res-menu {
@@ -618,4 +622,45 @@ input {
 
     }
 
+    .translate-section {
+        height: 100vh;
+        width: 100vw;
+
+        .signout-button {
+            left: 0;
+            right: auto;
+        }
+
+        .translate-container {
+
+            #langToTranslate {
+                top: 75px;
+                width: 120px;
+            }
+
+            .original-header {
+                text-align: left;
+                margin-top: 70px;
+            }
+
+            .translated-header {
+                text-align: left;
+                margin-top: 30px;
+            }
+
+            .translation-box {
+
+                #originalText,
+                #translatedText {
+                    width: 80vw;
+                    height: 100px;
+                }
+
+                .save-button,
+                .translate-button {
+                    display: none;
+                }
+            }
+        }
+    }
 }
