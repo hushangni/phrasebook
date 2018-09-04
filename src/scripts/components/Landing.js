@@ -4,6 +4,7 @@ import firebase from "../firebase";
 
 
 import Translate from './Translate';
+import BottomBar from './BottomBar';
 
 
 class Landing extends Component {
@@ -72,6 +73,7 @@ class Landing extends Component {
                 </div>
             </header>
             <Translate  userID={this.state.userID}/>
+            <BottomBar />
         </div>
 
         );
