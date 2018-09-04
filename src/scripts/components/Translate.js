@@ -79,6 +79,7 @@ class Translate extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if(user !== null) {
                 const dbRef = firebase.database().ref(`${user.uid}/unsaved`);
+                document.querySelector('.coerce-login').style.display = "none";
                 document.querySelector('.signout-button').text = "sign out";
                 console.log(dbRef, "db ref");
 
@@ -97,6 +98,7 @@ class Translate extends Component {
             }
             else {
                 document.querySelector('.signout-button').text = "back";
+
                 this.setState({
                     phrasesList: [],
                     userID: 'guest'
@@ -224,6 +226,7 @@ class Translate extends Component {
                 </div>
                 <SavedAside phrasesList={this.state.phrasesList} deletePhrase={this.deletePhrase} userID={this.state.userID}/>
                 <section className="translate-section">
+                    <p className="coerce-login">You are in the Community Phrasebook, login to save your own Personal Phrasebooks!</p>
                     <a href="#" className="button signout-button" onClick={this.handleSignOut}>Sign out</a>
                     <i className="fas fa-backspace signout-symbol" onClick={this.handleSignOut}></i>
                     <div className="translate-container">

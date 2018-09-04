@@ -243,6 +243,16 @@ input {
   font-size: 3.3rem;
   display: none; }
 
+.coerce-login {
+  position: absolute;
+  top: 4px;
+  width: 280px;
+  font-size: 1.4rem;
+  right: 110px;
+  padding: 0;
+  opacity: 0.8;
+  font-style: italic; }
+
 .landing {
   position: absolute;
   width: 100%;
@@ -366,13 +376,13 @@ input {
       cursor: pointer;
       background: transparent;
       border: 2px solid white;
-      padding: 10px;
+      padding: 5px;
       font-size: 1.7rem;
-      height: 50px;
+      height: 40px;
       width: 170px;
       color: white;
       position: absolute;
-      top: 40px;
+      top: 50px;
       left: 230px;
       appearance: none; }
     .translate-section .translate-container:nth-child(2) {
@@ -608,6 +618,8 @@ input {
     width: calc(100vw - 250px); } }
 
 @media screen and (max-width: 730px) {
+  .coerce-login {
+    display: none; }
   .translate-section {
     flex-direction: column;
     justify-content: flex-start; }
