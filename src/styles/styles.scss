@@ -651,9 +651,8 @@ input {
 }
 
 @media screen and (max-width: 600px) {
-    .landing {
-        height: calc(100vh - 40px);
-    }
+
+
     .hamburger-toggle {
         display: inline-block;
         position: absolute;
@@ -714,7 +713,7 @@ input {
     }
 
     .main-container {
-        height: calc(100vh - 40px);
+        height: 100vh;
         display: flex;
         flex-direction: column;
     }
