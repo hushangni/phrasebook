@@ -1,3 +1,9 @@
+
+Phrasebook is a translation application that pulls data from the Yandex API. 
+Users are able to translate their favourite phrases and create phrasebooks from them.
+Logging in will allow users to save their personal phrasebooks for later use!
+Meeting the in-laws? Going to a new country? Remember to use your Phrasebook!
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
